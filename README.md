@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📦 Proyecto Next.js 14 — Gestión de Ítems
+Proyecto desarrollado en Next.js 14 con App Router, TypeScript y Material UI para gestionar productos y servicios, permitiendo crear, listar, editar y eliminar ítems.
 
-## Getting Started
+🚀 Instalación y ejecución
+1️⃣ Clonar el repositorio:
 
-First, run the development server:
+git clone https://github.com/tomii-dev-fullstack/mid-dev-test
 
-```bash
+cd mid-dev-test
+
+2️⃣ Instalar dependencias:
+
+
+npm install
+
+3️⃣ Ejecutar el servidor de desarrollo:
+
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+4️⃣ Abrir en el navegador:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🗂️ Estructura del proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+La estructura se basa en App Router de Next.js 14 como indica el requerimiento con la siguiente estructura
 
-## Learn More
+/src
+  /app
+    /add                  # Formulario de alta
+    /api
+        /items            # API Routes
+          /[id]
+    /fonts                # Fuentes personalizadas
+    /items                # Listado y creación
+       /[id]
+         /edit            # CRUD por id
+  /components             # Componentes reutilizables
+    /button
+    /filters
+    /form
+    /input
+    /modal
+    /select
+  /lib                    # Configuración de componentes de formulario, base de datos y constante de api
+  /models                 # Tipado TypeScript de entidades generales
+  /utils                  # Funciones utilitarias
+/public                   # Recursos estáticos
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+⚙️ Decisiones técnicas y arquitectónicas
+  
+✅ Next.js 14 App Router: permite estructurar las rutas por dominio funcional, aprovechar las ventajas de server components y API routes integradas.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+✅ TypeScript: para tipado estricto, mayor mantenibilidad y detección temprana de errores en desarrollo.
 
-## Deploy on Vercel
+✅ Material UI: para una UI moderna
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ API routes locales para operaciones CRUD sobre una base de datos(db.json).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ Persistencia temporal simulada para foco en front-end y arquitectura modular, fácilmente reemplazable por una API real.
+
+📌 Requisitos
+
+Next.js ^14
+
+TypeScript
+
+Material UI
