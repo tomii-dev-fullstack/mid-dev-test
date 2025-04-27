@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "name": "Laptop Dell XPS 13",
+    "code": "LAPXPS13",
+    "type": "bien",
+    "price": 12000,
+    "createdAt": "2025-11-19T10:00:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  },
+  {
+    "id": "2",
+    "name": "Servicio de mantenimiento de computadoras",
+    "code": "SERVCOMP",
+    "type": "servicio",
+    "price": 500,
+    "createdAt": "2025-11-20T11:00:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  },
+  {
+    "id": "3",
+    "name": "Monitor samsung 27 UHD",
+    "code": "MON27UHD",
+    "type": "bien",
+    "price": 3000,
+    "createdAt": "2025-11-18T09:30:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  },
+  {
+    "id": "4",
+    "name": "Instalación de red doméstica",
+    "code": "INSTRED",
+    "type": "servicio",
+    "price": 800,
+    "createdAt": "2025-11-17T14:00:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  },
+  {
+    "id": "5",
+    "name": "Pelota",
+    "code": "PEL",
+    "type": "servicio",
+    "price": 800,
+    "createdAt": "2025-11-17T14:00:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  },
+  {
+    "id": "6",
+    "name": "Cámara",
+    "code": "CAM",
+    "type": "bien",
+    "price": 800,
+    "createdAt": "2025-11-17T14:00:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  },
+  {
+    "id": "7",
+    "name": "Iphone",
+    "code": "IPH",
+    "type": "bien",
+    "price": 800,
+    "createdAt": "2025-11-17T14:00:00Z",
+    "deleted": false,
+    "deletedAt": ""
+  }
+]
