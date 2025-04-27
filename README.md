@@ -25,29 +25,6 @@ http://localhost:3000
 
 La estructura se basa en App Router de Next.js 14 como indica el requerimiento con la siguiente estructura
 
-/src
-  /app
-    /add                  # Formulario de alta
-    /api
-        /items            # API Routes
-          /[id]
-    /fonts                # Fuentes personalizadas
-    /items                # Listado y creación
-       /[id]
-         /edit            # CRUD por id
-  /components             # Componentes reutilizables
-    /button
-    /filters
-    /form
-    /input
-    /modal
-    /select
-  /lib                    # Configuración de componentes de formulario, base de datos y constante de api
-  /models                 # Tipado TypeScript de entidades generales
-  /utils                  # Funciones utilitarias
-/public                   # Recursos estáticos
-
-
 ⚙️ Decisiones técnicas y arquitectónicas
   
 ✅ Next.js 14 App Router: permite estructurar las rutas por dominio funcional, aprovechar las ventajas de server components y API routes integradas.
