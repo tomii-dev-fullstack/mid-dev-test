@@ -31,6 +31,8 @@ export const EditItemForm = ({ itemm, id }: EditItemFormProps) => {
     e.preventDefault();
     setLoading(true);
 
+    // Delay artificial de 1 segundo
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const result = await editItemAction(id, item);
 
     if (result.success) {
@@ -51,7 +53,7 @@ export const EditItemForm = ({ itemm, id }: EditItemFormProps) => {
       ))}
       <ButtonComponent
         disabled={false}
-        label="Guardar cambios"
+        label={loading ? "Guardando..." : "Guardar cambios"}
         type="submit"
         color="success"
         loading={loading}

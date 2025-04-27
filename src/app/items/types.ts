@@ -1,3 +1,4 @@
+import { ItemFilters } from "@/components/filters/types";
 import { Item } from "@/models/item"
 
 export interface Props {
@@ -5,4 +6,7 @@ export interface Props {
   totalPages: number
   currentPage: number
 
+}
+export interface ItemsSSRProps {
+    searchParams: ItemFilters;
 }

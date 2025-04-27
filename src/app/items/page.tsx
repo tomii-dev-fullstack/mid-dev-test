@@ -1,11 +1,9 @@
-import { ItemFilters } from '@/models/item';
 import ItemsPage from './items_page';
 import { Box, Typography } from '@mui/material';
+import { ItemsSSRProps } from './types';
 
-interface Props {
-    searchParams: ItemFilters;
-}
-export default async function ListItems({ searchParams }: Props) {
+
+export default async function ListItems({ searchParams }: ItemsSSRProps) {
     const page = Number(searchParams.page) || 1;
     const limit = 5;
 

@@ -10,7 +10,7 @@ export default function ButtonComponent({
   color = label === "Eliminar" ? "error" : "info",
   variant = "contained",
   showLoading = false,
-  loading = false, // loading externo
+  loading /* = false */, // loading externo
   type = "button",
 }: ButtonProps) {
   const [internalLoading, setInternalLoading] = useState(false);
@@ -19,7 +19,8 @@ export default function ButtonComponent({
     if (!onClick) return;
     if (showLoading) setInternalLoading(true);
     try {
-      onClick();
+    
+        onClick();
     } finally {
       if (showLoading) setInternalLoading(false);
     }

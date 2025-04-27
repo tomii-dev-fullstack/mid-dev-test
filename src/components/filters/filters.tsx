@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button, Paper, Stack, TextField } from "@mui/material";
+import { Paper, Stack, TextField } from "@mui/material";
 import ButtonComponent from "../button/button";
 import { ItemSelectField } from "../select/select";
 import { TypeFilter } from "../select/types";
@@ -52,6 +52,7 @@ export default function Filters() {
         alignItems="center"
         justifyContent="center"
         flexWrap="wrap"
+        
       >
         <ItemSelectField
           name="type"
@@ -88,19 +89,27 @@ export default function Filters() {
           InputLabelProps={{ shrink: true }}
         />
 
-        <Button
+        {/* <Button
           variant="contained"
           onClick={handleFilter}
           disabled={isPending}
           disableElevation
         >
           {isPending ? 'Cargando...' : 'Filtrar'}
-        </Button>
+        </Button> */}
 
         <ButtonComponent
           type="button"
-          onClick={() => router.push("/add")}
-          color="info"
+          onClick={handleFilter}
+          color="primary"
+          label={isPending ? "Filtrando..." : "Filtrar"}
+          loading={isPending}
+          variant="contained"
+        />
+        <ButtonComponent
+          type="button"
+          onClick={() => router.push("/items/add")}
+          color="secondary"
           label="Agregar"
           variant="contained"
         />

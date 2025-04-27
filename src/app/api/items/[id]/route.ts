@@ -3,7 +3,6 @@ import items from '../../../../lib/db.json';
 import { Item } from '@/models/item';
 
 export async function GET(_: NextRequest, { params }: { params: { id: string } }) {
-  console.log("id"+params.id)
   const item = items.find(i => i.id === params.id && !i.deleted);
   if (!item) return NextResponse.json({ error: 'No encontrado' }, { status: 404 });
   return NextResponse.json(item);

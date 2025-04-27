@@ -27,7 +27,7 @@ export const AddItemForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const result = await createItemAction(item);
 
     if (result.success) {
@@ -46,7 +46,7 @@ export const AddItemForm = () => {
       {formFields.map((field, index) => (
         <field.component key={index} {...field.props} />
       ))}
-      <ButtonComponent type='submit' disabled={loading} onClick={() => console.log("Clickeado")} color='success' label="Agregar" variant='contained' />
+      <ButtonComponent type='submit' disabled={loading} onClick={() => console.log("Clickeado")} color='success'  label={loading ? "Agregando..." : "Agregar"}  variant='contained' />
 
     </Box>
   );

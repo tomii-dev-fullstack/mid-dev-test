@@ -9,16 +9,15 @@ import {
   Box,
   Avatar,
   Divider,
-  Stack,
   CircularProgress,
 } from "@mui/material"
 import Link from "next/link"
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined"
 import { fetchItemById } from "@/utils/items"
-import { formatDateGT, formatPriceGTQ } from "@/utils/helpers"
 import ModalComponent from "@/components/modal/modal"
 import ButtonComponent from "@/components/button/button"
 import { Props } from "./types"
+import { ItemDetails } from "@/components/itemDetails/itemDetails"
 
 
 
@@ -56,7 +55,7 @@ export default function ItemDetailPage({ params }: Props) {
   }
 
   if (!item) {
-    // fallback (por seguridad extra, pero debería cubrirlo router.push arriba)
+    // fallback (por seguridad extra)
     return null
   }
 
@@ -67,7 +66,7 @@ export default function ItemDetailPage({ params }: Props) {
       minHeight="100vh"
       bgcolor="#f5f5f5"
     >
-      {/* Contenido centrado */}
+
       <Box
         display="flex"
         flexDirection="column"
@@ -76,7 +75,7 @@ export default function ItemDetailPage({ params }: Props) {
         flexGrow={1}
         px={2}
       >
-   
+
         <Box
           display="flex"
           alignItems="center"
@@ -94,7 +93,7 @@ export default function ItemDetailPage({ params }: Props) {
           </Link>
         </Box>
 
-        {/* Paper con datos */}
+
         <Paper
           elevation={0}
           sx={{
@@ -122,24 +121,7 @@ export default function ItemDetailPage({ params }: Props) {
 
           <Divider sx={{ mb: 2 }} />
 
-
-          <Box flexGrow={1}>
-            <Stack spacing={1}>
-              <Typography variant="body1" color="text.secondary">
-                Código: <strong>{item.code}</strong>
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                Tipo: <strong>{item.type}</strong>
-              </Typography>
-              <Typography variant="h6" color="success.main">
-                {formatPriceGTQ(item.price)}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Creado el: {formatDateGT(item.createdAt)}
-              </Typography>
-            </Stack>
-          </Box>
-
+          <ItemDetails item={item} />
 
           <Box
             display="flex"
@@ -152,7 +134,7 @@ export default function ItemDetailPage({ params }: Props) {
             <ButtonComponent
               disabled
               onClick={() => router.push(`/items/${params.id}/edit`)}
-              label="Editar"
+              label={loading ? "Cargando" : "Editar"}
             />
             <ButtonComponent
               disabled
@@ -163,7 +145,7 @@ export default function ItemDetailPage({ params }: Props) {
         </Paper>
       </Box>
 
-      {/* Modal */}
+
       <ModalComponent
         id={params.id}
         open={open}

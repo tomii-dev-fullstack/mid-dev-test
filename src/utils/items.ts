@@ -19,7 +19,7 @@ export const fetchItemById = async (id: string): Promise<Item> => {
 export async function deleteItem(id: string) {
   const res = await fetch(`${API_LOCAL}/api/items/${id}`, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' }, next: { revalidate: 0 }
+    headers: { 'Content-Type': 'application/json' }, cache: 'no-store'
   });
 
   if (!res.ok) {
@@ -32,7 +32,7 @@ export async function deleteItem(id: string) {
 export async function editItem(id: string, data: Item) {
   const res = await fetch(`${API_LOCAL}/api/items/${id}`, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' }, cache: 'no-store',
     body: JSON.stringify(data),
   });
 

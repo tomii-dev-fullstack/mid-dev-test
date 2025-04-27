@@ -37,7 +37,7 @@ export type FormField = FieldConfig;
 export const itemFormFields = (
   item: Item,
   handleChange: (name: string, value: string | number, type?: 'producto' | 'servicio') => void,
-  errors?: { name: string; price: string; code: string }
+  errors?: { name: string; price: string; code?: string }
 ): FormField[] => [
   {
     component: ItemTextField as React.FC<AnyFieldProps>,
@@ -81,7 +81,7 @@ export const itemFormFields = (
       label: 'Precio',
       type: 'producto',
       value: item.price,
-      onChange: (name, value) => handleChange(name, value),
+      onChange: (name, value) => handleChange(name, value === '' ? 1 : Number(value)),
       error: !!errors?.price,
       helperText: errors?.price,
     },

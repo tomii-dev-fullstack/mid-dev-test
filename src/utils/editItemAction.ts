@@ -13,7 +13,7 @@ export async function editItemAction(id: string, item: ItemFormData): Promise<Re
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item),
-      next: { revalidate: 0 }
+      cache: 'no-store'
     });
 
     if (!res.ok) {

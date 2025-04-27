@@ -13,7 +13,7 @@ export const ItemTextField = ({
     value={value}
     onChange={e => onChange(name, type === 'number' ? Number(e.target.value) : e.target.value)}
     fullWidth
-    required
+    required={name === "code" ? false : true}
     error={error}
     helperText={helperText}
   />

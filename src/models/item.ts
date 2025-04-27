@@ -12,7 +12,7 @@ export interface Item {
 export interface Errors {
   name: string;
   price: string;
-  code: string;
+  code?: string;
 }
 
 export interface Result {
