@@ -21,9 +21,6 @@ npm run dev
 
 http://localhost:3000
 
-🗂️ Estructura del proyecto
-
-La estructura se basa en App Router de Next.js 14 como indica el requerimiento con la siguiente estructura
 
 ⚙️ Decisiones técnicas y arquitectónicas
   
