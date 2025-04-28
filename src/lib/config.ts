@@ -22,7 +22,7 @@ export interface ItemTextFieldProps {
   helperText?: string;
 }
 
-// Unificación de  las props posibles
+// Unificación de las props posibles
 type AnyFieldProps = ItemTextFieldProps | ItemSelectFieldProps;
 
 // Config de cada campo
@@ -58,7 +58,7 @@ export const itemFormFields = (
       value: item.type,
       onChange: (name, value) => handleChange(name, value, value as 'producto' | 'servicio'),
       options: [
-        { value: 'bien', label: 'Bien' },
+        { value: 'producto', label: 'Producto' },
         { value: 'servicio', label: 'Servicio' },
       ],
     },

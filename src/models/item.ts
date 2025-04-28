@@ -3,7 +3,7 @@ export interface Item {
   id: string;
   name: string;
   code: string;
-  type: 'bien' | 'servicio';
+  type: 'producto' | 'servicio';
   price: number;
   createdAt: string;
   deleted: boolean;
@@ -27,7 +27,7 @@ export interface ItemFormData {
   name: string;
   code: string;
   price: number;
-  type: 'bien' | 'servicio';
+  type: 'producto' | 'servicio';
   deleted: boolean;
 }
 

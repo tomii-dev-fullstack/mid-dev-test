@@ -12,7 +12,7 @@ export type GetItemsQuery = {
   export type CreateItemBody = {
     name: string;
     code?: string;
-    type: 'bien' | 'servicio';
+    type: 'producto' | 'servicio';
     price: number;
   };
   

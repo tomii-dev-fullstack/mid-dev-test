@@ -1,3 +1,4 @@
+import { ItemFilters } from "@/components/filters/types";
 import { ItemFormData } from "@/models/item";
 
 export const validateItem = (item: ItemFormData) => {
@@ -19,3 +20,11 @@ export const formatPriceGTQ = (price: number) =>
 
 export const formatDateGT = (date: string) =>
   new Date(date).toLocaleDateString("es-GT");
+export const buildSearchParams = (params: Partial<ItemFilters>) => {
+  const searchParams = new URLSearchParams();
+  (Object.entries(params) as [keyof ItemFilters, string][]).forEach(([key, value]) => {
+    if (value) searchParams.set(key, value);
+  });
+  return searchParams;
+};
+

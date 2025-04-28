@@ -18,5 +18,8 @@ export const ItemTextField = ({
     helperText={helperText}
     size={size}
     sx={sx}
+    InputLabelProps={{
+      shrink: type === "date" ? true : undefined, // solo para fechas
+    }}
   />
 );

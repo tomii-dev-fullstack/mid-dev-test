@@ -13,7 +13,7 @@ export const AddItemForm = () => {
     name: '',
     code: '',
     price: 0,
-    type: 'bien',
+    type: 'producto',
     deleted: false,
   });
 

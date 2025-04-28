@@ -1,35 +1,41 @@
 import ItemsPage from './items_page';
 import { Box, Typography } from '@mui/material';
 import { ItemsApiResponse, ItemsSSRProps } from './types';
+import { ItemFilters } from '@/components/filters/types';
+import { buildSearchParams } from '@/utils/helpers';
 
 
 export default async function ListItems({ searchParams }: ItemsSSRProps) {
-    const page = Number(searchParams.page) || 1;
     const limit = 5;
+    const page = Number(searchParams.page) || 1;
 
-    const type = searchParams.type || "";
-    const search = searchParams.search || "";
-    const fromDate = searchParams.fromDate || "";
-    const toDate = searchParams.toDate || "";
-    const code = searchParams.code || "";
-    const name = searchParams.name || "";
-
-    const params = new URLSearchParams({
+    const queryEntries: Partial<ItemFilters> = {
         page: String(page),
         limit: String(limit),
+        type: searchParams.type,
+        search: searchParams.search,
+        fromDate: searchParams.fromDate,
+        toDate: searchParams.toDate,
+        code: searchParams.code,
+        name: searchParams.name,
+    };
+
+    const params = buildSearchParams(queryEntries);
+
+    (Object.entries(queryEntries) as [keyof ItemFilters, string][]).forEach(([key, value]) => {
+        if (value) params.set(key, value);
     });
-    if (type) params.set("type", type);
-    if (name) params.set("name", name);
-    if (search) params.set("search", search);
-    if (fromDate) params.set("fromDate", fromDate);
-    if (toDate) params.set("toDate", toDate);
-    if (code) params.set("code", code);
+
 
     const res = await fetch(`${process.env.BASE_URL}/api/items?${params.toString()}`, {
-        next: { revalidate: 0 },
+        cache: 'no-store',
     });
-    const data: ItemsApiResponse = await res.json();
 
+    if (!res.ok) {
+        throw new Error(`Failed to fetch items: ${res.status}`);
+    }
+
+    const data: ItemsApiResponse = await res.json();
     const totalPages = Math.ceil(data.total / limit);
 
     return (

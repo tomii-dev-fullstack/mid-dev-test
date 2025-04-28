@@ -18,7 +18,7 @@ export default async function EditItemPage({ params }: Props) {
       justifyContent="center"
       minHeight="100vh"
       bgcolor="#f5f5f5"
-      px={{ xs: 2, sm: 3, md: 4 }} // padding horizontal responsive
+      px={{ xs: 2, sm: 3, md: 4 }}
    >
       <Box
         display="flex"
