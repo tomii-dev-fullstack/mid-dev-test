@@ -1,20 +1,21 @@
 'use client';
 import { Box, Modal, Typography, Stack } from '@mui/material';
-import { deleteItem } from '@/utils/items';
-import { useRouter } from 'next/navigation';
+/* import { deleteItem } from '@/utils/items';
+import { useRouter } from 'next/navigation'; */
 import ButtonComponent from '../button/button';
 import { ModalComponentProps } from './types';
 
 export default function ModalComponent({
     title,
+    onConfirm,
     content,
     open,
     setOpen,
-    id,
+    /* id, */
 }: ModalComponentProps) {
-    const router = useRouter();
-
-    const handleDelete = async () => {
+/*     const router = useRouter();
+ */
+/*     const handleDelete = async () => {
         try {
             const res = await deleteItem(id);
             if (res.success) {
@@ -26,7 +27,7 @@ export default function ModalComponent({
             console.error(error);
         }
         setOpen(false);
-    };
+    }; */
 
     const handleClose = () => setOpen(false);
 
@@ -73,7 +74,7 @@ export default function ModalComponent({
               disabled
             />
             <ButtonComponent
-              onClick={handleDelete}
+              onClick={onConfirm}
               color="error"
               label="Eliminar"
               variant="contained"

@@ -13,7 +13,7 @@ import {
 } from "@mui/material"
 import Link from "next/link"
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined"
-import { fetchItemById } from "@/utils/items"
+import { deleteItem, fetchItemById } from "@/utils/items"
 import ModalComponent from "@/components/modal/modal"
 import ButtonComponent from "@/components/button/button"
 import { Props } from "./types"
@@ -58,6 +58,7 @@ export default function ItemDetailPage({ params }: Props) {
     // fallback (por seguridad extra)
     return null
   }
+
 
   return (
     <Box
@@ -147,6 +148,19 @@ export default function ItemDetailPage({ params }: Props) {
 
 
       <ModalComponent
+         onConfirm={async () => {
+          try {
+            const res = await deleteItem(params.id)
+            if (res.success) {
+              router.push('/items')
+            } else {
+              console.error('Error al eliminar ítem')
+            }
+          } catch (error) {
+            console.error(error)
+          }
+          setOpen(false)
+        }}
         id={params.id}
         open={open}
         setOpen={setOpen}

@@ -6,4 +6,5 @@ export interface ModalComponentProps {
     id: string;
     open: boolean;
     setOpen: (value: boolean) => void;
+    onConfirm: () => Promise<void>;
 }
