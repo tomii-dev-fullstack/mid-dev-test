@@ -19,7 +19,7 @@ export const EditItemForm = ({ itemm, id }: EditItemFormProps) => {
     deleted: itemm.deleted,
   });
 
-  const [errors, setErrors] = useState<Errors>({ name: '', price: '', code: '' });
+  const [errors, setErrors] = useState<Errors>({ name: '', price: "", code: '' });
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleChange = (name: string, value: string | number) => {

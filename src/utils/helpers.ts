@@ -14,7 +14,7 @@ export const validateItem = (item: ItemFormData) => {
   return errors;
 };
 
-// utils/format.ts
+
 export const formatPriceGTQ = (price: number) =>
   price.toLocaleString("es-GT", { style: "currency", currency: "GTQ" });
 

@@ -18,7 +18,6 @@ export default function ModalComponent({
         try {
             const res = await deleteItem(id);
             if (res.success) {
-            
                 router.push('/items');
             } else {
                 console.error('Error al eliminar ítem');

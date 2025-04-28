@@ -1,6 +1,8 @@
 import { API_LOCAL } from '@/lib/api';
 import { DeleteItemResponse, EditItemResponse, Item } from '@/models/item';
 
+// Funciones auxiliares
+
 export const fetchItemById = async (id: string): Promise<Item> => {
   const res = await fetch(`${API_LOCAL}/api/items/${id}`, {
     method: 'GET',
