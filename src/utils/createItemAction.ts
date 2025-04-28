@@ -1,9 +1,11 @@
-
 import { validateItem } from "@/utils/helpers";
-import { ItemFormData, Result } from "@/models/item";
+import { ApiResponse, ItemFormData, Result } from "@/models/item";
+
+
 
 export async function createItemAction(item: ItemFormData): Promise<Result> {
   const validationErrors = validateItem(item);
+
   if (validationErrors.name || validationErrors.price || validationErrors.code) {
     return { success: false, errors: validationErrors };
   }
@@ -17,15 +19,17 @@ export async function createItemAction(item: ItemFormData): Promise<Result> {
     });
 
     if (!res.ok) {
+      const errorResponse: ApiResponse = await res.json();
+      console.error("Error desde API:", errorResponse);
       return {
         success: false,
-        errors: { name: 'Error al crear item', price: '', code: "" }
+        errors: { name: errorResponse.error || 'Error al crear item', price: '', code: "" }
       };
     }
 
     return { success: true, errors: { name: '', price: '', code: "" } };
-  } catch (error) {
-    console.error(error);
+  } catch (error: unknown) {
+    console.error("Error inesperado:", error);
     return {
       success: false,
       errors: { name: 'Error inesperado', price: '', code: "" }

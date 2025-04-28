@@ -3,7 +3,7 @@ import { ItemTextFieldProps } from './types';
 
 
 export const ItemTextField = ({
-  name, label, type = 'text', value, onChange, error, helperText
+  name, label, type = 'text', value, onChange, error, helperText, size, sx,
 }: ItemTextFieldProps) => (
   <TextField
     name={name}
@@ -16,5 +16,7 @@ export const ItemTextField = ({
     required={name === "code" ? false : true}
     error={error}
     helperText={helperText}
+    size={size}
+    sx={sx}
   />
 );

@@ -44,6 +44,7 @@ export const EditItemForm = ({ itemm, id }: EditItemFormProps) => {
     setLoading(false);
   };
 
+  //Configuración de inputs dinamicos
   const formFields: FormField[] = itemFormFields(item as Item, handleChange, errors);
 
   return (
@@ -53,7 +54,7 @@ export const EditItemForm = ({ itemm, id }: EditItemFormProps) => {
       ))}
       <ButtonComponent
         disabled={false}
-        label={loading ? "Guardando..." : "Guardar cambios"}
+        label={loading ? "Guardando" : "Guardar cambios"}
         type="submit"
         color="success"
         loading={loading}

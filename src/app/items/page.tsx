@@ -1,6 +1,6 @@
 import ItemsPage from './items_page';
 import { Box, Typography } from '@mui/material';
-import { ItemsSSRProps } from './types';
+import { ItemsApiResponse, ItemsSSRProps } from './types';
 
 
 export default async function ListItems({ searchParams }: ItemsSSRProps) {
@@ -19,7 +19,7 @@ export default async function ListItems({ searchParams }: ItemsSSRProps) {
         limit: String(limit),
     });
     if (type) params.set("type", type);
-    if (name) params.set("type", name);
+    if (name) params.set("name", name);
     if (search) params.set("search", search);
     if (fromDate) params.set("fromDate", fromDate);
     if (toDate) params.set("toDate", toDate);
@@ -28,7 +28,7 @@ export default async function ListItems({ searchParams }: ItemsSSRProps) {
     const res = await fetch(`${process.env.BASE_URL}/api/items?${params.toString()}`, {
         next: { revalidate: 0 },
     });
-    const data = await res.json();
+    const data: ItemsApiResponse = await res.json();
 
     const totalPages = Math.ceil(data.total / limit);
 

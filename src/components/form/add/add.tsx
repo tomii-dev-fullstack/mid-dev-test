@@ -2,7 +2,7 @@
 
 import { Box } from '@mui/material';
 import { FormField, itemFormFields } from '@/lib/config';
-import { Errors, Item, ItemFormData } from '@/models/item';
+import { Errors, ItemFormData, Result } from '@/models/item';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createItemAction } from '@/utils/createItemAction';
@@ -28,7 +28,8 @@ export const AddItemForm = () => {
     e.preventDefault();
     setLoading(true);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    const result = await createItemAction(item);
+
+    const result: Result = await createItemAction(item);
 
     if (result.success) {
       router.push('/items');
@@ -39,14 +40,14 @@ export const AddItemForm = () => {
     setLoading(false);
   };
 
-  const formFields: FormField[] = itemFormFields(item as Item, handleChange, errors);
+  const formFields: FormField[] = itemFormFields(item, handleChange, errors);
 
   return (
     <Box component="form" onSubmit={handleSubmit} display="flex" flexDirection="column" gap={2}>
-      {formFields.map((field, index) => (
+      {formFields.map((field: FormField, index) => (
         <field.component key={index} {...field.props} />
       ))}
-      <ButtonComponent type='submit' disabled={loading} onClick={() => console.log("Clickeado")} color='success'  label={loading ? "Agregando..." : "Agregar"}  variant='contained' />
+      <ButtonComponent type='submit' disabled={loading} onClick={() => console.log("Clickeado")} color='success' label={loading ? "Agregando..." : "Agregar"} variant='contained' />
 
     </Box>
   );

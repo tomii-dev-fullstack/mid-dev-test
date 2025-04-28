@@ -1,4 +1,4 @@
-import { ItemFormData, ResultEditItemAction } from "@/models/item";
+import { ApiResponse, ItemFormData, ResultEditItemAction } from "@/models/item";
 import { validateItem } from "@/utils/helpers";
 
 export async function editItemAction(id: string, item: ItemFormData): Promise<ResultEditItemAction> {
@@ -17,6 +17,8 @@ export async function editItemAction(id: string, item: ItemFormData): Promise<Re
     });
 
     if (!res.ok) {
+      const errorResponse: ApiResponse = await res.json();
+      console.error("Error desde API:", errorResponse);
       return {
         success: false,
         errors: { name: 'Error al editar item', price: '', code: '' },

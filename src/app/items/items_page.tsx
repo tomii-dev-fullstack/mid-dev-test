@@ -10,7 +10,7 @@ export default function ItemsTable({ items, totalPages, currentPage }: Props) {
     <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={5} px={2}>
       <Filters />
 
-      <TableComponent items={items} />
+      <TableComponent items={items} totalPages={totalPages} currentPage={currentPage} />
       <Box mt={2} display="flex" gap={1} flexWrap="wrap">
         {Array.from({ length: totalPages }).map((_, index) => (
           <Link

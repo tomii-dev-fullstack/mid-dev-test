@@ -2,10 +2,11 @@
 
 import { useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Paper, Stack, TextField } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
 import ButtonComponent from "../button/button";
 import { ItemSelectField } from "../select/select";
 import { TypeFilter } from "../select/types";
+import { ItemTextField } from "../input/input_form";
 
 export default function Filters() {
   const [type, setType] = useState<TypeFilter>("todos");
@@ -45,14 +46,22 @@ export default function Filters() {
   ];
 
   return (
-    <Paper elevation={0} sx={{ p: 3, maxWidth: 1100, width: '100%', mb: 4, border: '1px dashed gray' }}>
+    <Paper
+      elevation={0}
+      sx={{
+        p: { xs: 2, sm: 3 },
+        maxWidth: 1100,
+        width: '100%',
+        mb: 4,
+        border: '1px dashed gray',
+      }}
+    >
       <Stack
         direction={{ xs: 'column', md: 'row' }}
-        spacing={2}
+        spacing={{ xs: 1.5, sm: 2 }}
         alignItems="center"
         justifyContent="center"
         flexWrap="wrap"
-        
       >
         <ItemSelectField
           name="type"
@@ -61,59 +70,57 @@ export default function Filters() {
           onChange={(name, value) => setType(value as TypeFilter)}
           options={typeOptions}
           size="small"
+
         />
 
-        <TextField
+        <ItemTextField
+          name="search"
           label="Buscar"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(name, value) => setSearch(value as string)}
           size="small"
-          sx={{ minWidth: 200 }}
+          sx={{ width: { xs: '100%', sm: 200 } }} // 100% en xs, 200px en sm+
         />
 
-        <TextField
+        <ItemTextField
+          name="fromDate"
           label="Desde"
           type="date"
           value={fromDate}
-          onChange={(e) => setFromDate(e.target.value)}
+          onChange={(name, value) => setFromDate(value as string)}
           size="small"
-          InputLabelProps={{ shrink: true }}
+
+          sx={{ width: { xs: '100%', sm: 'auto' } }}
         />
 
-        <TextField
+        <ItemTextField
+          name="toDate"
           label="Hasta"
           type="date"
           value={toDate}
-          onChange={(e) => setToDate(e.target.value)}
+          onChange={(name, value) => setToDate(value as string)}
           size="small"
-          InputLabelProps={{ shrink: true }}
+          sx={{ width: { xs: '100%', sm: 'auto' } }}
         />
-
-        {/* <Button
-          variant="contained"
-          onClick={handleFilter}
-          disabled={isPending}
-          disableElevation
-        >
-          {isPending ? 'Cargando...' : 'Filtrar'}
-        </Button> */}
 
         <ButtonComponent
           type="button"
           onClick={handleFilter}
           color="primary"
-          label={isPending ? "Filtrando..." : "Filtrar"}
+          label={isPending ? 'Filtrando...' : 'Filtrar'}
           loading={isPending}
           variant="contained"
         />
+
         <ButtonComponent
           type="button"
-          onClick={() => router.push("/items/add")}
+          onClick={() => router.push('/items/add')}
           color="secondary"
           label="Agregar"
           variant="contained"
         />
       </Stack>
     </Paper>
+
   );
 }

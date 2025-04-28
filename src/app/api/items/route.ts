@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import items from '@/lib/db.json';
 import { v4 as uuidv4 } from 'uuid';
-
+import { Item } from "@/models/item"
+import { CreateItemBody } from './types';
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
@@ -11,8 +12,8 @@ export async function GET(req: NextRequest) {
   const toDate = searchParams.get('toDate');
   const page = parseInt(searchParams.get('page') || '1', 10);
   const limit = parseInt(searchParams.get('limit') || '5', 10);
-
-  let filteredItems = items.filter(item => !item.deleted);
+  const typedItems = items as Item[];
+  let filteredItems: Item[] = typedItems.filter(item => !item.deleted);
 
   if (type && type !== "todos") {
     filteredItems = filteredItems.filter(item => item.type === type);
@@ -44,13 +45,13 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ total, items: paginatedItems });
 }
 export async function POST(req: NextRequest) {
-  const { name, code, type, price } = await req.json();
+  const { name, code, type, price }: CreateItemBody = await req.json();
 
   if (!name || !type || !price) {
     return NextResponse.json({ error: 'Campos requeridos faltantes.' }, { status: 400 });
   }
 
-  const newItem = {
+  const newItem: Item = {
     id: uuidv4(),
     name,
     code: code || uuidv4().slice(0, 8),

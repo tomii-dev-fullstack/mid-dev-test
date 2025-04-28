@@ -18,21 +18,21 @@ export default async function EditItemPage({ params }: Props) {
       justifyContent="center"
       minHeight="100vh"
       bgcolor="#f5f5f5"
-      px={2}
-    >
+      px={{ xs: 2, sm: 3, md: 4 }} // padding horizontal responsive
+   >
       <Box
         display="flex"
         alignItems="center"
-        gap={2}
+        gap={{ xs: 1, sm: 2 }}
         mb={3}
         width="100%"
 
         maxWidth="700px"
       >
         <Link href={`/items/${id}`} style={{ textDecoration: 'none', color: "black" }}>
-        <Typography component="a" color="info">
-              Volver
-            </Typography>
+          <Typography component="a" color="info">
+            Volver
+          </Typography>
         </Link>
       </Box>
 
@@ -40,7 +40,7 @@ export default async function EditItemPage({ params }: Props) {
         sx={{
           width: '100%',
           maxWidth: '700px',
-          p: 3,
+          p: { xs: 2, sm: 3, md: 4 },
           boxShadow: 'none',
           border: '1px solid #ddd',
           borderRadius: 3,

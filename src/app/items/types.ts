@@ -10,3 +10,7 @@ export interface Props {
 export interface ItemsSSRProps {
     searchParams: ItemFilters;
 }
+export interface ItemsApiResponse {
+  total: number;
+  items: Item[];
+}

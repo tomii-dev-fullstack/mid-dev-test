@@ -4,7 +4,7 @@ import { ItemSelectFieldProps } from './types';
 
 export const ItemSelectField = ({ name, label, value, onChange, options }: ItemSelectFieldProps) => {
   return (
-    <FormControl >
+    <FormControl sx={{ width: { xs: '100%', sm: 'auto' } }}>
       <InputLabel id={`${name}-label`}>{label}</InputLabel>
       <Select
       

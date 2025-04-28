@@ -30,13 +30,13 @@ export default function ItemDetailPage({ params }: Props) {
   useEffect(() => {
     const getItem = async () => {
       try {
-        const fetchedItem = await fetchItemById(params.id)
+        const fetchedItem: Item | null = await fetchItemById(params.id)
         if (!fetchedItem || fetchedItem.deleted) {
           router.push("/items")
           return
         }
         setItem(fetchedItem)
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Error fetching item:", error)
         router.push("/items")
       } finally {
@@ -97,9 +97,9 @@ export default function ItemDetailPage({ params }: Props) {
         <Paper
           elevation={0}
           sx={{
-            p: 4,
+            p: { xs: 2, sm: 3, md: 4 }, // padding: 2 en mobile, 3 en sm, 4 en md en adelante
             minHeight: "50vh",
-            maxWidth: 600,
+            maxWidth: { xs: "100%", sm: 500, md: 600 }, // 100% en mobile, 500px en sm, 600px en md+
             width: "100%",
             border: "1px solid #ddd",
             borderRadius: 3,
